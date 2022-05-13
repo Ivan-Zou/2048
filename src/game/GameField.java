@@ -93,7 +93,7 @@ public class GameField extends JPanel {
     }
 
     public void load() {
-        if (!writtenToFile) {
+        if (!writtenToFile && scores.getScore() != 0) {
             writeGameDataToFiles();
         }
         board.load(Constants.MANUAL_SAVED_GAME_FILE);
