@@ -27,7 +27,6 @@ public class Board {
         } else {
             reset();
         }
-
     }
 
     public void reset() {

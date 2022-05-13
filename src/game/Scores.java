@@ -29,7 +29,6 @@ public class Scores {
             // File Does Not Exist
             highScore = 0;
         }
-
     }
 
     private int getHighScoreFromString(String line) {
