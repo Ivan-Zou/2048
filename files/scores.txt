@@ -1,3 +1,0 @@
-Scores:
-game 1: 168
-game 2: 16
