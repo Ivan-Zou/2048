@@ -22,10 +22,11 @@ public class Run2048 implements Runnable {
         // Points labels
         final JLabel pointLabel = new JLabel("Points: " + 0);
         pointLabel.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 10));
+        status_panel.add(pointLabel);
+
         Scores scores = new Scores();
         final JLabel highScoreLabel = new JLabel("HighScore: " + scores.getHighScore());
         highScoreLabel.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 10));
-        status_panel.add(pointLabel);
         status_panel.add(highScoreLabel);
 
         // Status label
