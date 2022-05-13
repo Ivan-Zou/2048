@@ -77,6 +77,63 @@ public class Board {
         return board[y][x];
     }
 
+    public void load(String file) {
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(file));
+            points = Integer.parseInt(reader.readLine());
+            for (int y = 0; y < board.length; y++) {
+                for (int x = 0; x < board.length; x++) {
+                    board[y][x] = Integer.parseInt(reader.readLine());
+                }
+            }
+            reader.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } catch (NumberFormatException ex) {
+            reset();
+        }
+    }
+
+    public boolean isGameOver() {
+        for (int y = 0; y < board.length; y++) {
+            for (int x = 0; x < board.length; x++) {
+                int currCell = getCell(x, y);
+                if (currCell == 0) {
+                    return false;
+                }
+                // Left Cell
+                if (cellInBound(board, x - 1, y)) {
+                    if (currCell == getCell(x - 1, y)) {
+                        return false;
+                    }
+                }
+                // Top Cell
+                if (cellInBound(board, x, y - 1)) {
+                    if (currCell == getCell(x, y - 1)) {
+                        return false;
+                    }
+                }
+                // Bottom Cell
+                if (cellInBound(board, x, y + 1)) {
+                    if (currCell == getCell(x, y + 1)) {
+                        return false;
+                    }
+                }
+                // Right Cell
+                if (cellInBound(board, x + 1, y)) {
+                    if (currCell == getCell(x + 1, y)) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
+    private boolean cellInBound(int[][] board, int x, int y) {
+        return y >= 0 && y < board.length && x >= 0 && x < board[0].length;
+    }
+
     public int getPoints() {
         return points;
     }
@@ -120,10 +177,6 @@ public class Board {
     private void swap(int num1, int x1, int y1, int num2, int x2, int y2) {
         board[y1][x1] = num2;
         board[y2][x2] = num1;
-    }
-
-    private boolean cellInBound(int[][] board, int x, int y) {
-        return y >= 0 && y < board.length && x >= 0 && x < board[0].length;
     }
 
     public void down() {
@@ -234,40 +287,10 @@ public class Board {
         }
     }
 
-    public boolean isGameOver() {
-        for (int y = 0; y < board.length; y++) {
-            for (int x = 0; x < board.length; x++) {
-                int currCell = getCell(x, y);
-                if (currCell == 0) {
-                    return false;
-                }
-                // Left Cell
-                if (cellInBound(board, x - 1, y)) {
-                    if (currCell == getCell(x - 1, y)) {
-                        return false;
-                    }
-                }
-                // Top Cell
-                if (cellInBound(board, x, y - 1)) {
-                    if (currCell == getCell(x, y - 1)) {
-                        return false;
-                    }
-                }
-                // Bottom Cell
-                if (cellInBound(board, x, y + 1)) {
-                    if (currCell == getCell(x, y + 1)) {
-                        return false;
-                    }
-                }
-                // Right Cell
-                if (cellInBound(board, x + 1, y)) {
-                    if (currCell == getCell(x + 1, y)) {
-                        return false;
-                    }
-                }
-            }
+    public void autoSave() {
+        if (autoSave) {
+            save(Constants.AUTO_SAVED_GAME_FILE);
         }
-        return true;
     }
 
     public void save(String file) {
@@ -285,29 +308,6 @@ public class Board {
             writer.close();
         } catch (IOException ex) {
             ex.printStackTrace();
-        }
-    }
-
-    public void load(String file) {
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(file));
-            points = Integer.parseInt(reader.readLine());
-            for (int y = 0; y < board.length; y++) {
-                for (int x = 0; x < board.length; x++) {
-                    board[y][x] = Integer.parseInt(reader.readLine());
-                }
-            }
-            reader.close();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        } catch (NumberFormatException ex) {
-            reset();
-        }
-    }
-
-    public void autoSave() {
-        if (autoSave) {
-            save(Constants.AUTO_SAVED_GAME_FILE);
         }
     }
 }
