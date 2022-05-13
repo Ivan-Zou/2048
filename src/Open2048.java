@@ -1,4 +1,4 @@
-import javax.swing.*;
+import javax.swing.SwingUtilities;
 
 public class Open2048 {
     public static void main(String[] args) {

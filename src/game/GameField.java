@@ -1,9 +1,15 @@
 package game;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.BorderFactory;
+
+import java.awt.Graphics;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.Dimension;
+import java.awt.Color;
+import java.awt.Font;
 
 public class GameField extends JPanel {
     private final Board board;
