@@ -7,9 +7,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class Board {
+    private final boolean autoSave;
     private int[][] board;
     private int points;
-    private final boolean autoSave;
 
     public Board() {
         autoSave = false;
