@@ -8,8 +8,6 @@ import javax.swing.JOptionPane;
 import javax.swing.BorderFactory;
 
 import java.awt.BorderLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class Run2048 implements Runnable {
     public void run() {
@@ -44,20 +42,17 @@ public class Run2048 implements Runnable {
         // Reset button
         final JButton reset = new JButton("New Game");
         reset.setFocusable(false);
-        reset.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                field.reset();
-            }
-        });
+        reset.addActionListener(actionEvent -> field.reset());
         control_panel.add(reset);
 
         // Save Game button
         final JButton save = new JButton("Save Game");
         save.setFocusable(false);
-        save.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                if (field.gameOver()) JOptionPane.showMessageDialog(null, "Invalid Save: Game Over");
-                else field.save();
+        save.addActionListener(actionEvent -> {
+            if (field.gameOver()) {
+                JOptionPane.showMessageDialog(null, "Invalid Save: Game Over");
+            } else {
+                field.save();
             }
         });
         control_panel.add(save);
@@ -65,11 +60,7 @@ public class Run2048 implements Runnable {
         // Load Game button
         final JButton load = new JButton("Load Game");
         load.setFocusable(false);
-        load.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                field.load();
-            }
-        });
+        load.addActionListener(actionEvent -> field.load());
         control_panel.add(load);
 
         frame.pack();
