@@ -66,10 +66,6 @@ public class Scores {
         return highScore;
     }
 
-    public LinkedList<Integer> getAllRecordedScores() {
-        return allScores;
-    }
-
     public void recordScore() {
         allScores.add(score);
     }
