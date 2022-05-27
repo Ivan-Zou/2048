@@ -11,11 +11,6 @@ public class Board {
     private int[][] board;
     private int points;
 
-    public Board() {
-        autoSave = false;
-        reset();
-    }
-
     public Board(boolean autoSave) {
         this.autoSave = autoSave;
         board = new int[Constants.BOARD_SIZE][Constants.BOARD_SIZE];
@@ -38,12 +33,12 @@ public class Board {
 
     private void generate() {
         boolean notGenerated = true;
-        int numToGenerate = (getRandomInteger(0, 100) <= Constants.NUMBER_PROBABILITY ? 2 : 4);
+        int numToGenerate = (getRandomInteger() <= Constants.NUMBER_PROBABILITY ? 2 : 4);
         while (notGenerated && !isFull()) {
             for (int y = 0; y < board.length; y++) {
                 for (int x = 0; x < board.length; x++) {
                     if (getCell(x, y) == 0) {
-                        int random = getRandomInteger(0, 100);
+                        int random = getRandomInteger();
                         if (random <= Constants.GENERATION_PROBABILITY) {
                             board[y][x] = numToGenerate;
                             notGenerated = false;
@@ -58,8 +53,8 @@ public class Board {
         }
     }
 
-    private int getRandomInteger(int min, int max) {
-        return (int) ((Math.random() * (max - min)) + min + 1);
+    private int getRandomInteger() {
+        return (int) ((Math.random() * 100) + 1);
     }
 
     private boolean isFull() {
