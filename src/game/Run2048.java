@@ -33,7 +33,7 @@ public class Run2048 implements Runnable {
         status_panel.add(statusLabel);
 
         // Creates the Game
-        final GameField field = new GameField(statusLabel, pointLabel, highScoreLabel);
+        final GameMechanics field = new GameMechanics(statusLabel, pointLabel, highScoreLabel);
         frame.add(field, BorderLayout.CENTER);
 
         final JPanel control_panel = new JPanel();

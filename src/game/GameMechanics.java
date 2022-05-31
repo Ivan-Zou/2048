@@ -11,7 +11,7 @@ import java.awt.Dimension;
 import java.awt.Color;
 import java.awt.Font;
 
-public class GameField extends JPanel {
+public class GameMechanics extends JPanel {
     private final Board board;
     private final Scores scores;
 
@@ -19,7 +19,7 @@ public class GameField extends JPanel {
 
     private boolean writtenToFile;
 
-    public GameField(JLabel status, JLabel points, JLabel highScore) {
+    public GameMechanics(JLabel status, JLabel points, JLabel highScore) {
         board = new Board(true);
         scores = new Scores();
 
