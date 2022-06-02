@@ -51,7 +51,7 @@ public class GameMechanics extends JPanel {
                     board.autoSave();
                     scores.setScores(board.getPoints());
                     points.setText("Points: " + scores.getScore());
-                    highScore.setText("HighScore: " + scores.getHighScore());
+                    highScore.setText("High Score: " + scores.getHighScore());
                 }
 
                 if (board.isGameOver() && !writtenToFile) {
@@ -81,7 +81,7 @@ public class GameMechanics extends JPanel {
         scores.reset();
         status.setText("Running...");
         points.setText("Points: " + scores.getScore());
-        highScore.setText("HighScore: " + scores.getHighScore());
+        highScore.setText("High Score: " + scores.getHighScore());
         board.reset();
         board.autoSave();
         repaint();
@@ -101,7 +101,7 @@ public class GameMechanics extends JPanel {
         scores.setScores(board.getPoints());
         status.setText("Running...");
         points.setText("Points: " + scores.getScore());
-        highScore.setText("HighScore: " + scores.getHighScore());
+        highScore.setText("High Score: " + scores.getHighScore());
         board.autoSave();
         repaint();
         requestFocusInWindow();
