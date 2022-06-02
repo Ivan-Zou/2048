@@ -62,7 +62,7 @@ public class GameMechanics extends JPanel {
         });
     }
 
-    public void writeGameDataToFiles() {
+    private void writeGameDataToFiles() {
         scores.recordScore();
         scores.writeToFile();
         writtenToFile = true;
