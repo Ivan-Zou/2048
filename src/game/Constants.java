@@ -1,8 +1,6 @@
 package game;
 
 public class Constants {
-    public static final int WINDOW_LOCATION_X = 445;
-    public static final int WINDOW_LOCATION_Y = 75;
     public static final int FIELD_WIDTH = 400;
     public static final int FIELD_HEIGHT = 400;
 
